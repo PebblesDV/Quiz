@@ -28,7 +28,8 @@ let quizData = [
     rightAnswer: "3",
   },
   {
-    question: "How many attemps do you get per category?",
+    question:
+      "How many attemps to lift as heavy as you can do you get per category?",
     options: ["2", "3", "4", "5"],
     rightAnswer: "3",
   },
@@ -36,6 +37,23 @@ let quizData = [
     question: "What is commonly used in competitions to improve grip?",
     options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
     rightAnswer: "Chalk",
+  },
+  {
+    question: "What is the main focus in powerlifting?",
+    options: ["Endurance", "Speed", "Strength", "Flexibility"],
+    rightAnswer: "Strength",
+  },
+  {
+    question:
+      "What is the weight of a standard barbell used in men's competitions?",
+    options: ["15kg", "20kg", "25kg", "30kg"],
+    rightAnswer: "20kg",
+  },
+  {
+    question:
+      "What piece of equipment is mandatory for a powerlifter to wear during official competitions?",
+    options: ["Belt", "Weightlifting gloves", "Knee sleeves", "Singlet"],
+    rightAnswer: "Singlet",
   },
 ];
 
@@ -96,15 +114,7 @@ function nextQuestion() {}
 
 function loadQuestion() {}
 
-//even test hoor hij doet gek
-
-//powerliten??
-//5 tot 10 vragen
-//open EN meerkeuze vragen
-
-// De quiz heeft een gebruiksvriendelijk vormgegeven quizpagina
-// De code bevat een functie voor het weergeven van de vragen
-// De code bevat een functie voor het controleren van het gegeven antwoord
-// De code bevat een click event op de antwoorden
-// Code is ‘bug free’ (bevat geen fouten)
-// Code bevat comments zodat de code leesbaar is
+// Na het klikken op een antwoord moet het niet nog een keer kunnen
+// Na het klikken op een antwoord waarbij je feedback krijgt, moet de feedback van de andere antwoorden niet meer geschreven kunnen worden
+// Met de "Next question" button moet je door kunnen gaan naar de volgende vraag
+// De score, en op welke vraag je momenteel zit moet bijgehouden en weergegeven worden
