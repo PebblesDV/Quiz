@@ -1,5 +1,6 @@
 let canvasWidth = 800;
 let canvasHeight = 600;
+let questionAnswered = "";
 
 let currentQuestion = 0;
 let score = 0;
@@ -21,9 +22,10 @@ let quizData = [
     rightAnswer: "19-23",
   },
   {
-    question: "",
-    options: [],
-    rightAnswer: "",
+    question:
+      "In order to be considered a good lift in competition, how many judges must give a white light?",
+    options: ["1", "2", "3", "4"],
+    rightAnswer: "3",
   },
   {
     question: "How many attemps do you get per category?",
@@ -31,9 +33,9 @@ let quizData = [
     rightAnswer: "3",
   },
   {
-    question: "",
-    options: [],
-    rightAnswer: "",
+    question: "What is commonly used in competitions to improve grip?",
+    options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
+    rightAnswer: "Chalk",
   },
 ];
 
@@ -43,19 +45,35 @@ function setup() {
   noLoop();
 }
 
+function draw() {
+  background(0, 0, 0);
+
+  fill("purple");
+  stroke("pink");
+  strokeWeight(4);
+  ellipse(10, 600, 500, 500);
+  ellipse(800, 10, 700, 700);
+
+  button = createButton("Next question");
+  button.position(600, 480);
+  button.mousePressed();
+
+  showQuestion(0);
+}
+
 function showQuestion(questionId) {
   const question = quizData[questionId];
 
-  noStroke();
+  stroke("black");
   textSize(30);
   fill(255, 255, 255);
-  text(question.question, 100, 100);
+  text(question.question, 130, 100);
 
   for (let i = 0; i < question.options.length; i++) {
     const option = question.options[i];
 
     button = createButton(option);
-    button.position(200, 200 + i * 50);
+    button.position(220, 200 + i * 50);
     button.mousePressed(() => checkAnswer(option, question.rightAnswer));
   }
 }
@@ -65,30 +83,28 @@ function checkAnswer(givenAnswer, rightAnswer) {
     correctAnswer = true;
     textSize(20);
     fill(0, 255, 0);
-    text("Answer is correct!", 100, 400);
+    text("Answer is correct!", 565, 450);
   } else {
     correctAnswer = false;
+    textSize(20);
     fill(255, 0, 0);
-    text("Answer is wrong", 100, 400);
+    text("Answer is wrong", 575, 450);
   }
-
-  // Als je het antwoord goed hebt. Toon tekst dat het antwoord goed is. Als het fout is, toon dat het fout is
 }
 
-function draw() {
-  background(0, 0, 0);
+function nextQuestion() {}
 
-  showQuestion(0);
-}
+function loadQuestion() {}
+
+//even test hoor hij doet gek
 
 //powerliten??
 //5 tot 10 vragen
 //open EN meerkeuze vragen
 
 // De quiz heeft een gebruiksvriendelijk vormgegeven quizpagina
-// De afmetingen van het canvas zijn 800 x 600 pixels
 // De code bevat een functie voor het weergeven van de vragen
 // De code bevat een functie voor het controleren van het gegeven antwoord
-// De code bevat een click evetn op de antwoorden
+// De code bevat een click event op de antwoorden
 // Code is ‘bug free’ (bevat geen fouten)
 // Code bevat comments zodat de code leesbaar is
