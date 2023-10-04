@@ -7,28 +7,33 @@ let score = 0;
 let quizData = [
   {
     question: "What 3 lifts are performed in powerlifting?",
-    options: ["Bench press, Deadlift, Squat", "Snatch, Clean and jerk, Deadlift", "Bench press, Clean and jerk, Squat", "Bench press, Deadlift, Clean and jerk"],
-    correctAnswer: "Bench press, Deadlift, Squat",
+    options: [
+      "Bench press, Deadlift, Squat",
+      "Snatch, Clean and jerk, Deadlift",
+      "Bench press, Clean and jerk, Squat",
+      "Bench press, Deadlift, Clean and jerk",
+    ],
+    rightAnswer: "Bench press, Deadlift, Squat",
   },
   {
     question: "How old are the people that compete in the Junior category?",
     options: ["15 and under", "16-18", "19-23", "24-39"],
-    correctAnswer: "19-23",
+    rightAnswer: "19-23",
   },
   {
     question: "",
     options: [],
-    correctAnswer: "",
+    rightAnswer: "",
   },
   {
     question: "How many attemps do you get per category?",
     options: ["2", "3", "4", "5"],
-    correctAnswer: "3",
+    rightAnswer: "3",
   },
   {
     question: "",
     options: [],
-    correctAnswer: "",
+    rightAnswer: "",
   },
 ];
 
@@ -38,8 +43,42 @@ function setup() {
   noLoop();
 }
 
+function showQuestion(questionId) {
+  const question = quizData[questionId];
+
+  noStroke();
+  textSize(30);
+  fill(255, 255, 255);
+  text(question.question, 100, 100);
+
+  for (let i = 0; i < question.options.length; i++) {
+    const option = question.options[i];
+
+    button = createButton(option);
+    button.position(200, 200 + i * 50);
+    button.mousePressed(() => checkAnswer(option, question.rightAnswer));
+  }
+}
+
+function checkAnswer(givenAnswer, rightAnswer) {
+  if (givenAnswer === rightAnswer) {
+    correctAnswer = true;
+    textSize(20);
+    fill(0, 255, 0);
+    text("Answer is correct!", 100, 400);
+  } else {
+    correctAnswer = false;
+    fill(255, 0, 0);
+    text("Answer is wrong", 100, 400);
+  }
+
+  // Als je het antwoord goed hebt. Toon tekst dat het antwoord goed is. Als het fout is, toon dat het fout is
+}
+
 function draw() {
-  background(220);
+  background(0, 0, 0);
+
+  showQuestion(0);
 }
 
 //powerliten??
@@ -50,6 +89,6 @@ function draw() {
 // De afmetingen van het canvas zijn 800 x 600 pixels
 // De code bevat een functie voor het weergeven van de vragen
 // De code bevat een functie voor het controleren van het gegeven antwoord
-// De code bevat een click event op de antwoorden
+// De code bevat een click evetn op de antwoorden
 // Code is ‘bug free’ (bevat geen fouten)
 // Code bevat comments zodat de code leesbaar is
