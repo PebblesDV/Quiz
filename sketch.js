@@ -6,6 +6,8 @@ let hasAlreadyAnswered = false;
 let currentQuestion = 0;
 let score = 0;
 
+let testMessage = "Ewa dushi";
+
 let quizData = [
   //all of the questions, options and the right answers in objects
   {
@@ -23,40 +25,40 @@ let quizData = [
     options: ["15 and under", "16-18", "19-23", "24-39"],
     rightAnswer: "19-23",
   },
-  {
-    question:
-      "In order to be considered a good lift in competition, how many judges must give a white light?",
-    options: ["1", "2", "3", "4"],
-    rightAnswer: "3",
-  },
-  {
-    question:
-      "How many attemps to lift as heavy as you can do you get per category?",
-    options: ["2", "3", "4", "5"],
-    rightAnswer: "3",
-  },
-  {
-    question: "What is commonly used in competitions to improve grip?",
-    options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
-    rightAnswer: "Chalk",
-  },
-  {
-    question: "What is the main focus in powerlifting?",
-    options: ["Endurance", "Speed", "Strength", "Flexibility"],
-    rightAnswer: "Strength",
-  },
-  {
-    question:
-      "What is the weight of a standard barbell used in men's competitions?",
-    options: ["15kg", "20kg", "25kg", "30kg"],
-    rightAnswer: "20kg",
-  },
-  {
-    question:
-      "What piece of equipment is mandatory for a powerlifter to wear during official competitions?",
-    options: ["Belt", "Weightlifting gloves", "Knee sleeves", "Singlet"],
-    rightAnswer: "Singlet",
-  },
+  // {
+  //   question:
+  //     "In order to be considered a good lift in competition, how many judges must give a white light?",
+  //   options: ["1", "2", "3", "4"],
+  //   rightAnswer: "2",
+  // },
+  // {
+  //   question:
+  //     "How many attemps to lift as heavy as you can do you get per category?",
+  //   options: ["2", "3", "4", "5"],
+  //   rightAnswer: "3",
+  // },
+  // {
+  //   question: "What is commonly used in competitions to improve grip?",
+  //   options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
+  //   rightAnswer: "Chalk",
+  // },
+  // {
+  //   question: "What is the main focus in powerlifting?",
+  //   options: ["Endurance", "Speed", "Strength", "Flexibility"],
+  //   rightAnswer: "Strength",
+  // },
+  // {
+  //   question:
+  //     "What is the weight of a standard barbell used in men's competitions?",
+  //   options: ["15kg", "20kg", "25kg", "30kg"],
+  //   rightAnswer: "20kg",
+  // },
+  // {
+  //   question:
+  //     "What piece of equipment is mandatory for a powerlifter to wear during official competitions?",
+  //   options: ["Belt", "Weightlifting gloves", "Knee sleeves", "Singlet"],
+  //   rightAnswer: "Singlet",
+  // },
 ];
 
 function setup() {
@@ -74,7 +76,12 @@ function draw() {
   ellipse(10, 600, 500, 500);
   ellipse(800, 10, 700, 700);
 
-  showQuestion(0);
+  fill("white");
+  noStroke();
+  textSize(20);
+  text(score, 100, 100);
+
+  showQuestion(currentQuestion);
 }
 
 function showQuestion(questionId) {
@@ -97,10 +104,11 @@ function showQuestion(questionId) {
 
 function handleClickAnswer(givenAnswer, rightAnswer) {
   if (hasAlreadyAnswered === false) {
+    console.log("EWA");
     checkAnswer(givenAnswer, rightAnswer);
     button = createButton("Next question"); //button to continue to the next question
     button.position(600, 480);
-    button.mousePressed();
+    button.mousePressed(nextQuestion);
   }
   hasAlreadyAnswered = true;
 }
@@ -121,11 +129,17 @@ function checkAnswer(givenAnswer, rightAnswer) {
   }
 }
 
-function nextQuestion() {}
+function nextQuestion() {
+  hasAlreadyAnswered = false;
 
-function loadQuestion() {}
+  const allButtons = selectAll("button");
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].remove();
+  }
 
-// Na het klikken op een antwoord moet het niet nog een keer kunnen
-// Na het klikken op een antwoord waarbij je feedback krijgt, moet de feedback van de andere antwoorden niet meer geschreven kunnen worden
-// Met de "Next question" button moet je door kunnen gaan naar de volgende vraag
+  currentQuestion++;
+  clear();
+  redraw();
+}
+
 // De score, en op welke vraag je momenteel zit moet bijgehouden en weergegeven worden
