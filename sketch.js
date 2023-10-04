@@ -65,17 +65,13 @@ function setup() {
 }
 
 function draw() {
-  background(0, 0, 0);
+  background(0, 0, 0); //black
 
   fill("purple"); //decoration for the background
   stroke("pink");
   strokeWeight(4);
   ellipse(10, 600, 500, 500);
   ellipse(800, 10, 700, 700);
-
-  button = createButton("Next question"); //button to continue to the next question
-  button.position(600, 480);
-  button.mousePressed();
 
   showQuestion(0);
 }
@@ -85,7 +81,7 @@ function showQuestion(questionId) {
 
   stroke("black");
   textSize(30);
-  fill(255, 255, 255);
+  fill(255, 255, 255); //white
   text(question.question, 130, 100); //showing question on the screen
 
   for (let i = 0; i < question.options.length; i++) {
@@ -94,8 +90,17 @@ function showQuestion(questionId) {
 
     button = createButton(option);
     button.position(220, 200 + i * 50);
-    button.mousePressed(() => checkAnswer(option, question.rightAnswer));
+    button.mousePressed(() => handleClickAnswer(option, question.rightAnswer));
   }
+}
+
+function handleClickAnswer(givenAnswer, rightAnswer) {
+  checkAnswer(givenAnswer, rightAnswer);
+  button = createButton("Next question"); //button to continue to the next question
+  button.position(600, 480);
+  button.mousePressed();
+
+  console.log("DEZE CODE DOE IK NADAT IK OP EEN ANTWOORD HEB GEKLIKT");
 }
 
 function checkAnswer(givenAnswer, rightAnswer) {
@@ -103,12 +108,12 @@ function checkAnswer(givenAnswer, rightAnswer) {
   if (givenAnswer === rightAnswer) {
     correctAnswer = true;
     textSize(20);
-    fill(0, 255, 0);
+    fill(0, 255, 0); //green
     text("Answer is correct!", 565, 450); //Feedback on whether the answer was correct or wrong
   } else {
     correctAnswer = false;
     textSize(20);
-    fill(255, 0, 0);
+    fill(255, 0, 0); //red
     text("Answer is wrong", 575, 450);
   }
 }
