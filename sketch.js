@@ -25,40 +25,40 @@ let quizData = [
     options: ["15 and under", "16-18", "19-23", "24-39"],
     rightAnswer: "19-23",
   },
-  // {
-  //   question:
-  //     "In order to be considered a good lift in competition, how many judges must give a white light?",
-  //   options: ["1", "2", "3", "4"],
-  //   rightAnswer: "2",
-  // },
-  // {
-  //   question:
-  //     "How many attemps to lift as heavy as you can do you get per category?",
-  //   options: ["2", "3", "4", "5"],
-  //   rightAnswer: "3",
-  // },
-  // {
-  //   question: "What is commonly used in competitions to improve grip?",
-  //   options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
-  //   rightAnswer: "Chalk",
-  // },
-  // {
-  //   question: "What is the main focus in powerlifting?",
-  //   options: ["Endurance", "Speed", "Strength", "Flexibility"],
-  //   rightAnswer: "Strength",
-  // },
-  // {
-  //   question:
-  //     "What is the weight of a standard barbell used in men's competitions?",
-  //   options: ["15kg", "20kg", "25kg", "30kg"],
-  //   rightAnswer: "20kg",
-  // },
-  // {
-  //   question:
-  //     "What piece of equipment is mandatory for a powerlifter to wear during official competitions?",
-  //   options: ["Belt", "Weightlifting gloves", "Knee sleeves", "Singlet"],
-  //   rightAnswer: "Singlet",
-  // },
+  {
+    question:
+      "In order to be considered a good lift in competition, how many judges must give a white light?",
+    options: ["1", "2", "3", "4"],
+    rightAnswer: "2",
+  },
+  {
+    question:
+      "How many attemps to lift as heavy as you can do you get per category?",
+    options: ["2", "3", "4", "5"],
+    rightAnswer: "3",
+  },
+  {
+    question: "What is commonly used in competitions to improve grip?",
+    options: ["Lifting straps", "Chalk", "Baby powder", "Vaseline"],
+    rightAnswer: "Chalk",
+  },
+  {
+    question: "What is the main focus in powerlifting?",
+    options: ["Endurance", "Speed", "Strength", "Flexibility"],
+    rightAnswer: "Strength",
+  },
+  {
+    question:
+      "What is the weight of a standard barbell used in men's competitions?",
+    options: ["15kg", "20kg", "25kg", "30kg"],
+    rightAnswer: "20kg",
+  },
+  {
+    question:
+      "What piece of equipment is mandatory for a powerlifter to wear during official competitions?",
+    options: ["Belt", "Weightlifting gloves", "Knee sleeves", "Singlet"],
+    rightAnswer: "Singlet",
+  },
 ];
 
 function setup() {
@@ -90,7 +90,9 @@ function showQuestion(questionId) {
   stroke("black");
   textSize(30);
   fill(255, 255, 255); //white
-  text(question.question, 130, 100); //showing question on the screen
+  textWrap(WORD);
+  textAlign(CENTER);
+  text(question.question, 130, 100, 500); //showing question on the screen
 
   for (let i = 0; i < question.options.length; i++) {
     //loop to make buttons for all of the answers
@@ -130,16 +132,25 @@ function checkAnswer(givenAnswer, rightAnswer) {
 }
 
 function nextQuestion() {
-  hasAlreadyAnswered = false;
+  if (currentQuestion + 1 < quizData.length) {
+    hasAlreadyAnswered = false;
 
-  const allButtons = selectAll("button");
-  for (let i = 0; i < allButtons.length; i++) {
-    allButtons[i].remove();
+    const allButtons = selectAll("button");
+    for (let i = 0; i < allButtons.length; i++) {
+      allButtons[i].remove();
+    }
+
+    currentQuestion++;
+    clear();
+    redraw();
+  } else {
+    showResults();
   }
+}
 
-  currentQuestion++;
-  clear();
-  redraw();
+function showResults() {
+  //TODO: verwijder eerst alles van het scherm.
+  //TODO: Laat score zien in het beeld. en laat zien dat je klaar bent.
 }
 
 // De score, en op welke vraag je momenteel zit moet bijgehouden en weergegeven worden
