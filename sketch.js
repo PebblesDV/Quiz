@@ -1,5 +1,6 @@
 let canvasWidth = 800;
 let canvasHeight = 600;
+let hasAlreadyAnswered = false;
 
 //variables i use later to keep track of the score and the current question
 let currentQuestion = 0;
@@ -95,12 +96,13 @@ function showQuestion(questionId) {
 }
 
 function handleClickAnswer(givenAnswer, rightAnswer) {
-  checkAnswer(givenAnswer, rightAnswer);
-  button = createButton("Next question"); //button to continue to the next question
-  button.position(600, 480);
-  button.mousePressed();
-
-  console.log("DEZE CODE DOE IK NADAT IK OP EEN ANTWOORD HEB GEKLIKT");
+  if (hasAlreadyAnswered === false) {
+    checkAnswer(givenAnswer, rightAnswer);
+    button = createButton("Next question"); //button to continue to the next question
+    button.position(600, 480);
+    button.mousePressed();
+  }
+  hasAlreadyAnswered = true;
 }
 
 function checkAnswer(givenAnswer, rightAnswer) {
