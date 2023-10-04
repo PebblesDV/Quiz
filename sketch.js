@@ -1,11 +1,12 @@
 let canvasWidth = 800;
 let canvasHeight = 600;
-let questionAnswered = "";
 
+//variables i use later to keep track of the score and the current question
 let currentQuestion = 0;
 let score = 0;
 
 let quizData = [
+  //all of the questions, options and the right answers in objects
   {
     question: "What 3 lifts are performed in powerlifting?",
     options: [
@@ -60,19 +61,19 @@ let quizData = [
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 
-  noLoop();
+  noLoop(); //makes sure things won't continue to loop without stop
 }
 
 function draw() {
   background(0, 0, 0);
 
-  fill("purple");
+  fill("purple"); //decoration for the background
   stroke("pink");
   strokeWeight(4);
   ellipse(10, 600, 500, 500);
   ellipse(800, 10, 700, 700);
 
-  button = createButton("Next question");
+  button = createButton("Next question"); //button to continue to the next question
   button.position(600, 480);
   button.mousePressed();
 
@@ -85,9 +86,10 @@ function showQuestion(questionId) {
   stroke("black");
   textSize(30);
   fill(255, 255, 255);
-  text(question.question, 130, 100);
+  text(question.question, 130, 100); //showing question on the screen
 
   for (let i = 0; i < question.options.length; i++) {
+    //loop to make buttons for all of the answers
     const option = question.options[i];
 
     button = createButton(option);
@@ -97,11 +99,12 @@ function showQuestion(questionId) {
 }
 
 function checkAnswer(givenAnswer, rightAnswer) {
+  //function to check if the given answer is the right answer
   if (givenAnswer === rightAnswer) {
     correctAnswer = true;
     textSize(20);
     fill(0, 255, 0);
-    text("Answer is correct!", 565, 450);
+    text("Answer is correct!", 565, 450); //Feedback on whether the answer was correct or wrong
   } else {
     correctAnswer = false;
     textSize(20);
