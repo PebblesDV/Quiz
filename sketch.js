@@ -112,6 +112,7 @@ function checkAnswer(givenAnswer, rightAnswer) {
     textSize(20);
     fill(0, 255, 0); //green
     text("Answer is correct!", 565, 450); //Feedback on whether the answer was correct or wrong
+    score++;
   } else {
     correctAnswer = false;
     textSize(20);
