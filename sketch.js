@@ -65,7 +65,7 @@ let quizData = [
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
 
-  deadlift = loadImage("assets/deadlift.jpg");
+  deadlift = loadImage("assets/deadlift.jpg"); //image i can use later on
 
   noLoop(); //makes sure things won't continue to loop without stop
 }
@@ -184,5 +184,5 @@ function showResults() {
   text("Now start training, I'll see u at worlds next year;)", 635, 100);
   text("<- Me deadlifting more than you", 675, 500);
 
-  image(deadlift, 370, 355, 200, 245);
+  image(deadlift, 370, 355, 200, 245); //image
 }
