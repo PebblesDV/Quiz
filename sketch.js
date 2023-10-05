@@ -137,7 +137,6 @@ function checkAnswer(givenAnswer, rightAnswer) {
 function nextQuestion() {
   if (currentQuestion + 1 < quizData.length) {
     hasAlreadyAnswered = false;
-
     const allButtons = selectAll("button");
     for (let i = 0; i < allButtons.length; i++) {
       allButtons[i].remove();
@@ -152,9 +151,28 @@ function nextQuestion() {
 }
 
 function showResults() {
+  const allButtons = selectAll("button");
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].remove();
+  }
+  clear();
+
+  background(0, 0, 0); //black
+
+  fill("purple"); //decoration for the background
+  stroke("pink");
+  strokeWeight(4);
+  ellipse(10, 600, 500, 500);
+  ellipse(800, 10, 700, 700);
+
+  fill("white");
+  stroke("black");
+  strokeWeight(2);
+  text("Your final score is:", 300, 300);
+  text(score, 400, 300);
+
   //TODO: verwijder eerst alles van het scherm.
   //TODO: Laat score zien in het beeld. en laat zien dat je klaar bent.
 }
 
-//De score, en op welke vraag je momenteel zit moet bijgehouden en weergegeven worden
 //Text centreren en zorgen dat het altijd te lezen is
