@@ -70,13 +70,7 @@ function setup() {
 }
 
 function draw() {
-  background(colorBlack); //black
-
-  fill("purple"); //decoration for the background
-  stroke("pink");
-  strokeWeight(4);
-  ellipse(10, 600, 500, 500);
-  ellipse(800, 10, 700, 700);
+  setBackground();
 
   fill(colorWhite);
   stroke(colorBlack);
@@ -155,14 +149,7 @@ function nextQuestion() {
 function showResults() {
   //function on what to do after last question
   clearCanvas();
-
-  background(colorBlack); //black
-
-  fill("purple"); //decoration for the background
-  stroke("pink");
-  strokeWeight(4);
-  ellipse(10, 600, 500, 500);
-  ellipse(800, 10, 700, 700);
+  setBackground();
 
   fill(colorWhite);
   stroke(colorBlack);
@@ -184,4 +171,14 @@ function clearCanvas() {
     allButtons[i].remove(); //removes all buttons off the screen
   }
   clear(); //clears the canvas
+}
+
+function setBackground() {
+  background(colorBlack); //black
+
+  fill("purple"); //decoration for the background
+  stroke("pink");
+  strokeWeight(4);
+  ellipse(10, 600, 500, 500);
+  ellipse(800, 10, 700, 700);
 }
