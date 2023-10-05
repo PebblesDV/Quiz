@@ -3,6 +3,7 @@ let canvasHeight = 600;
 let hasAlreadyAnswered = false; //lets me check whether a question has already been answered
 let colorWhite = (255, 255, 255);
 let colorBlack = (0, 0, 0);
+let deadlift;
 
 //variables i use later to keep track of the score and the current question
 let currentQuestion = 0;
@@ -63,6 +64,8 @@ let quizData = [
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
+
+  deadlift = loadImage("assets/deadlift.jpg");
 
   noLoop(); //makes sure things won't continue to loop without stop
 }
@@ -177,6 +180,9 @@ function showResults() {
   text("Your final score is:", 225, 190); //shows final score when quiz is done
   text(score, 225, 260);
 
-  textSize(15);
-  text("Now start training, I'll see u at worlds next year;)", 520, 450);
+  textSize(12);
+  text("Now start training, I'll see u at worlds next year;)", 635, 100);
+  text("<- Me deadlifting more than you", 675, 500);
+
+  image(deadlift, 370, 355, 200, 245);
 }
