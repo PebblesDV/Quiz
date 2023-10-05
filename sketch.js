@@ -168,8 +168,9 @@ function showResults() {
   fill("white");
   stroke("black");
   strokeWeight(2);
-  text("Your final score is:", 300, 300);
-  text(score, 400, 300);
+  textSize(40);
+  text("Your final score is:", 225, 190);
+  text(score, 225, 260);
 
   //TODO: verwijder eerst alles van het scherm.
   //TODO: Laat score zien in het beeld. en laat zien dat je klaar bent.
