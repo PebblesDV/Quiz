@@ -13,12 +13,12 @@ let quizData = [
   {
     question: "What 3 lifts are performed in powerlifting?",
     options: [
-      "Bench press, Deadlift, Squat",
+      "Squat, Bench press, Deadlift",
       "Snatch, Clean and jerk, Deadlift",
       "Bench press, Clean and jerk, Squat",
       "Bench press, Deadlift, Clean and jerk",
     ],
-    rightAnswer: "Bench press, Deadlift, Squat",
+    rightAnswer: "Squat, Bench press, Deadlift",
   },
   {
     question: "How old are the people that compete in the Junior category?",
@@ -143,13 +143,9 @@ function nextQuestion() {
   //function on what to do after each question
   if (currentQuestion + 1 < quizData.length) {
     hasAlreadyAnswered = false;
-    const allButtons = selectAll("button");
-    for (let i = 0; i < allButtons.length; i++) {
-      allButtons[i].remove(); //removes all buttons off the screen
-    }
+    clearCanvas();
 
     currentQuestion++; //adds +1 to question counter after every question
-    clear(); //clears the canvas
     redraw(); //redraws everything
   } else {
     showResults();
@@ -158,11 +154,7 @@ function nextQuestion() {
 
 function showResults() {
   //function on what to do after last question
-  const allButtons = selectAll("button");
-  for (let i = 0; i < allButtons.length; i++) {
-    allButtons[i].remove(); //removes all buttons off the screen
-  }
-  clear(); //clears the canvas
+  clearCanvas();
 
   background(colorBlack); //black
 
@@ -184,4 +176,12 @@ function showResults() {
   text("<- Me deadlifting more than you", 675, 500);
 
   image(deadlift, 370, 355, 200, 245); //image
+}
+
+function clearCanvas() {
+  const allButtons = selectAll("button");
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].remove(); //removes all buttons off the screen
+  }
+  clear(); //clears the canvas
 }
