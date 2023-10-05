@@ -6,8 +6,6 @@ let hasAlreadyAnswered = false;
 let currentQuestion = 0;
 let score = 0;
 
-let testMessage = "Ewa dushi";
-
 let quizData = [
   //all of the questions, options and the right answers in objects
   {
@@ -106,7 +104,6 @@ function showQuestion(questionId) {
 
 function handleClickAnswer(givenAnswer, rightAnswer) {
   if (hasAlreadyAnswered === false) {
-    console.log("EWA");
     checkAnswer(givenAnswer, rightAnswer);
     button = createButton("Next question"); //button to continue to the next question
     button.position(600, 480);
