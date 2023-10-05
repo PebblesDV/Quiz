@@ -172,8 +172,6 @@ function showResults() {
   text("Your final score is:", 225, 190);
   text(score, 225, 260);
 
-  //TODO: verwijder eerst alles van het scherm.
-  //TODO: Laat score zien in het beeld. en laat zien dat je klaar bent.
+  textSize(15);
+  text("Now start training, I'll see u at worlds next year;)", 520, 450);
 }
-
-//Text centreren en zorgen dat het altijd te lezen is
