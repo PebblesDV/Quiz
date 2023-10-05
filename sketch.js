@@ -3,7 +3,6 @@ let canvasHeight = 600;
 let hasAlreadyAnswered = false; //lets me check whether a question has already been answered
 let colorWhite = (255, 255, 255);
 let colorBlack = (0, 0, 0);
-let deadlift;
 
 //variables i use later to keep track of the score and the current question
 let currentQuestion = 0;
