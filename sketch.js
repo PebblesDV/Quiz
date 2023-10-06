@@ -70,7 +70,7 @@ function setup() {
 }
 
 function draw() {
-  setBackground();
+  setBackground(); //shows background
 
   fill(colorWhite);
   stroke(colorBlack);
