@@ -65,6 +65,7 @@ function setup() {
   createCanvas(canvasWidth, canvasHeight);
 
   deadlift = loadImage("assets/deadlift.jpg"); //image i can use later on
+  yeahBuddy = loadSound("assets/yeah-buddy.mp3"); //sound for when you get the answer right
 
   noLoop(); //makes sure things won't continue to loop without stop
 }
@@ -124,6 +125,7 @@ function checkAnswer(givenAnswer, rightAnswer) {
     textSize(20);
     fill(0, 255, 0); //green
     text("Answer is correct!", 645, 455); //Feedback on whether the answer was correct or wrong
+    yeahBuddy.play(); //correct answer sound
     score++; //adds +1 to the score after every right answer
   } else {
     correctAnswer = false;
